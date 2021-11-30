@@ -1,12 +1,10 @@
 name: Deploy lambda
 on:
   repository_dispatch:
-    types: [redeploy]
+    types: [changes-in-api]
 jobs:
-  myEvent:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          branch: ${{ github.event.client_payload.branch }}
       - run: echo ${{ github.event.client_payload.branch }}
